@@ -13,7 +13,7 @@ sed -i 's/&>>\/var\/log\/rundeck\/service.log &$//g' /etc/init.d/rundeckd
 # (this is needed for things like sending email:)
 #sed -i '/grails.serverURL/d' /etc/rundeck/rundeck-config.properties
 
-sed -i "s/^admin:admin/admin:$RDPASS/g" /etc/rundeck/realm.properties
+sed -i "s/^admin:admin/admin: $RDPASS/g" /etc/rundeck/realm.properties
 sed -i "s/http:\/\/localhost:4440/https:\/\/$MYHOST/g" /etc/rundeck/rundeck-config.properties
 
 sed -i "s,/etc/rundeck/jaas-loginmodule.conf,AUTH_LOGIN_CONFIG,g" /etc/rundeck/profile
