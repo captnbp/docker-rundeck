@@ -1,9 +1,12 @@
 FROM java:8
 
+LABEL app=rundeck
+LABEL version=2.8.2
+
 ENV	DEBIAN_FRONTEND noninteractive
 ENV	TZ="Europe/Paris"
 
-ENV	VERSION=2.7.2-1
+ENV	VERSION=2.8.2-1
 
 RUN echo $TZ > /etc/timezone 
 RUN dpkg-reconfigure tzdata
@@ -12,7 +15,7 @@ ENTRYPOINT /run.sh
 
 EXPOSE 4440
 
-RUN apt-get update && apt-get install -yq openssh-client sudo
+RUN apt-get update && apt-get install -yq openssh-client sudo uuid-runtime
 
 # Add the install commands
 ADD ./install.sh /
